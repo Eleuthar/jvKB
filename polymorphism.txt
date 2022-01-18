@@ -1,0 +1,39 @@
+Definition
+===========
+
+The ability of an instance to be passed as an instance of an interface
+
+An object can be accessed using a reference :
+	- with the same type as the object
+	- that is a superclass of the object
+	- that defines an interface implemented by the object, directly or via superclass
+
+* casting is not required if the object is being reassigned to a super type or interface of the object
+
+* only methods and variables available to that reference type are invokable on the object without an explicit cast, otherwise calling the method or variable of an another reference type will not compile
+
+* a method can take an instance of an interface as parameter; any class that implements the interface can be passed to the method
+
+* when defining a method that will be accessible outside the current class, it is good practice to use the superclass or interface type of input param
+
+
+
+Example
+```````
+	ClassX clz = new ClassName();
+	InterfaceX ifName = clz;
+	SuperClassX zpr = clz;
+
+
+
+
+Virtual methods
+================
+
+* is a method in which the implementation is not determined until runtime
+
+* all non-final, non-private, non-static are virtual methods, since they can be overridden
+
+* calling a method on an object that overrides a method, will return the overridden method, even if the call is on a parent reference or within the parent class
+
+

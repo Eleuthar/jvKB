@@ -1,0 +1,5 @@
+* (private) instance variable accessible via getter-setter method only
+
+* setter must have guard condition
+
+* methods must comply to JavaBeans prefix naming convention: get\set\is

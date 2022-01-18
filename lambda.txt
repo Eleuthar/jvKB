@@ -1,0 +1,10 @@
+* valid syntax
+    print(() -> true); // 0 parameters
+    print(a -> a.startsWith("test")); // 1 parameter
+    print((String a) -> a.startsWith("test")); // 1 parameter
+    print((a, b) -> a.startsWith("test")); // 2 parameters
+    print((String a, String b) -> a.startsWith("test")); // 2 parameters
+
+* does not allow local variable redeclaration
+    (a, b) -> { int a = 0; return 5;} \\ not allowed
+    (q, z) -> { int x = 6; return 7;} \\ allowed

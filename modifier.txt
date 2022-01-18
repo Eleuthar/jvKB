@@ -1,0 +1,65 @@
+default (package private)
+==========================
+* can be accessed only by members in the same class, another class in same package
+
+
+private
+==========
+* can be accessed only by members in the same class
+
+
+protected
+===========
+* can be accessed only by member in the same class, another class in same package, superclass in different package
+
+
+public
+===========
+* class name must match the .java file
+* there must never be more than one public class per file
+* a java file can have a modifier other than public
+
+
+static
+===========
+* binds method to its class, to call it just by class name, no need for instantiation\object creation
+* non-static main() triggers exception
+* to variables, it makes them class variable and scope spans between declaration until program ends
+* public static can use instantiation by new...()
+* never call a class static, all other instance variables will become static
+* cannot call instance member
+
+
+void
+===========
+* used in methods that change object state [main: app started > app finished]
+
+
+final
+===========
+* defines constant variable
+* prevents variable reassignment to different object
+* allows calling methods that change it's value
+* final method prevents overriding
+* final classes prevents extend
+
+
+subclass
+============
+* inherits public or protected primitives, objects or methods
+
+
+abstract
+============
+* class:
+	- cannot be instantiated directly, only extended
+	- may be defined with 0 or more abstract & non-abstract methods
+	- may not be marked private or final
+	- extending another abstract class inherits all of itss abstract methods as its own.
+	- the first concrete class that extends an abstract class must provide an implementation for all the inherited abstract methods
+	
+* method:
+	- may only be defined in abstract classes
+	- may not be declared private or final
+	- must not provide method\body implementation in the abstract class for which it is declared
+	- implementation in a subclass must follow overriding rules: name and signature must be the same, with at least the same visibility as the method in the parent class

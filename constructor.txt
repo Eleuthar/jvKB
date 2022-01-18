@@ -1,0 +1,19 @@
+* no constructor defined = default constructor without parameter
+
+* private constructor
+    - tells compiler to not provide default with no arg
+    - prevents other classes to instantiate the class
+    - useful when a class has only static methods, therefore no need to instantiate
+
+* omitting setter implements class immutability, but value initialization is ensured with constructor param
+
+* the first statement is a call to another constructor within the class via this(), or to a constructor in the direct parent class via super()
+
+* if parent doesn't have explicit no-arg constructor:
+    - the child must still call super()
+    - if the child doesn't define a constructor, the compiler throws an error and try to insert default no-arg constructor in the child class
+
+
+* subclass constructor can have no-arg constructor as long as child constructor maps to parent constructor via explicit "super()" with the appropriate parent param
+
+* parent member can be accessed with "super.Method\Field"

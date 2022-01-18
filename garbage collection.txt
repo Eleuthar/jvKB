@@ -1,0 +1,16 @@
+Object vs reference
+====================
+* all references have the same size, no matter the type
+
+* objects sit on heap and have no name, only reference to it
+
+* an object remains in heap until it is no longer reachable:
+    1. no reference points to it
+    2. all references to the object have gone out of scope
+
+
+Methods
+========
+* System.gc() can be ignored by Java, not guaranteed to free heap.
+
+* finalize() is called if the garbage collector tries to collect the object. If GC fails, this method is not called twice.

@@ -1,0 +1,97 @@
+
+ * Java has a throwable superclass for all objects that represent events that alter program flow. Not all of these objects have the word exception
+
+	RuntimeException > Exception > Throwable
+	Error > Throwable
+
+ * "throw" keyword declares that the method might throw an Exception; when creating an exception, the convention is to use a String param
+
+ * RuntimeException aka "unchecked exceptions", (not the same with run time) are unexpected and not necessarily fatal
+
+ * Checked exceptions include Exception & all subclasses that do not extend RuntimeException
+
+ * try to avoid return codes, commonly used in searches. They can be accidentally ignored
+
+
+
+
+ TRY-CATCH-FINALLY
+```````````````````
+ ~ multiple catch blocks can be used and read in order or appearance, but only one matching the case will be executed
+
+ ~ if no catch is executed, a compiler error about unreachable code occurs; this happens when a superclass is caught before a subclass
+
+ ~ finally is always executed, regardless of exception not caught; finally can be ignored using "System.exit(integer)", integer being the returned error code
+
+ ~ a second exception can be thrown using another try statement
+
+ ~ inside finally block, a another try\catch can be added to prevent masking the exception from the catch block
+
+
+
+
+ (RUNTIME) UNCHECKED EXCEPTIONZ
+````````````````````````````````
+ (Not checked at compiled time) Not mandatory to be declared or handled
+
+ ~ ArithmeticException = division by zero
+
+ ~ ArrayIndexOutOfBoundsException = illegal index to access an array
+
+ ~ ClassCastException = cast exception to a class of which it is not an instance, ex.: String to Integer; allowed: Object to Integer, unless Object references a String
+
+ ~ IllegalArgumentException = method passed an illegal or inappropriate argument, ex.: guard condition for value to not be less than 0.
+
+ ~ NullPointerException = call a member on a null reference 
+
+ ~ NumberFormatException = attempt to convert string to number, using an inappropriate format, ex.: parseInt("string");
+
+
+
+
+ CHECKED EXCEPTIONZ
+````````````````````
+Mandatory to be:
+	- declared by specifying "throws < exception >" BEFORE CALLING METHOD BODY
+	OR
+	- handled by specifying try \ catch (< exception >) WITHIN CALLING METHOD BODY
+
+ >>>>>>>>  NOT WITHIN METHOD IMPLEMENTATION  <<<<<<<<<<<
+
+
+ ~ FileNotFoundException = code tries to reference a file that does not exist; subclass of IOException
+
+ ~ IOException = problem reading or writing a file
+
+ * subclasses \ interface implementer are not allowed to add new checked exception
+
+ * subclasses can declare subclass of exception type, as the superclass has already taken care of broader type
+
+ * calling method that throwz exception: the caller must either handle or declare the called method's exception
+
+ * calling a method that doesn't throw exception: the caller can declare its own exception, but not catch an exception for the called method, otherwise it considers unreachable code
+
+
+
+ ERRORz
+```````
+Errors extend Error class
+
+ ~ ExceptionInInitializerError = when static initializer throwz exception and doesn't handle it (unable to use the class)
+
+ ~ StackOverflowError = infinite recursion
+
+ ~ NoClassDefFoundError = code available at compile time but not runtime
+
+
+
+ EXCEPTION PRINTING
+````````````````````
+ println(Exception x)
+	||
+ println(Exception x.getMessage())
+	||
+ Exception x.printStacktrace()
+
+
+

@@ -1,0 +1,21 @@
+- explicit import of class name takes precedence over wildcard
+- import collision resolved by using the fully qualified class name
+- "import static" imports only static methods
+- same package classes do not require import
+
+java.lang
+	\\\automatically imported
+
+
+java.util.Random
+java.util.Arrays
+java.util.function.*
+	\\ lambda predicate
+
+
+java.nio.file.*
+	\\\Files, Paths
+
+
+java.time.*
+java.time.format

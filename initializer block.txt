@@ -1,0 +1,25 @@
+Instance init block
+=====================
+* unnamed code block outside method
+* fields and instance init run in the order of appearance, then the constructor (public ClassName() )
+
+
+Static init
+=================
+* static keyword specifies the block should be run when the class is first used
+* common use case: init collections like ArrayList
+
+
+##################################################################################
+
+	try to avoid  static and instance init, use constructor instead !!!!
+
+##################################################################################
+
+
+ORDER OF INIT
+==================
+1. Superclass
+2. static var & init block
+3. instance var & init block
+4. Constructor

@@ -1,0 +1,190 @@
+primitive VS object VS reference
+=================================
+
+* primitives cannot be assigned null value
+
+* when not null, references can be used to call methods
+
+* all objects are accessed by reference, there is never direct access to the object itself
+
+* all objects inherit java.lang.Object
+
+* the type of object determine which properties exist within the object in memory
+
+* the type of reference to the object determine which methods and variables are accessible to the Java program
+
+
+
+
+Casting objects
+===============
+
+* casting object from subclass to a superclass doesn't require explicit cast
+
+* casting object from superclass to subclass requires explicit cast
+
+* compiler will not allow casts to unrelated type
+
+* exception may be thrown at runtime if object being cast is not actually an instance of that class
+
+
+
+
+Numeric promotion rulez
+========================
+
+* if 2 values have different data types, the Java will auto-promote 1 of the values to the larger of the 2 data types
+
+* on integer vs float, int will be converted to float
+
+* smaller of 2 data types, is promoted to the larger
+
+
+
+
+ArrayList
+===========
+
+* If you call remove(0) using an empty ArrayList object, it will compile successfully.
+
+* arrays || arrayLists with same content are not equal
+
+* array converted to list keeps a mutual change link and the list has fixed size.
+
+
+
+
+Wrapper class
+==============
+
+* used in Autoboxing: each primitive has a Wrapper class that is converted to, in order to be stored in ArrayList (it only uses classes)
+
+* Wrapper methods: parseType returns primitive, valueOf returns Wrapper, as long as the parameter is valid; except Character
+
+* in overloaded methods, only one conversion is allowed to reach the parameter type in method definition: primitive > larger type > autoboxed type > varargs
+
+
+
+
+Switch statement
+================
+
+* switch parameter must be: int\byte\short\char\string\enum
+
+* the case value must be compile-time constant value of the same data type as the switch parameter: literal || final constant var XOR enum
+
+
+
+
+for loop
+=========
+
+* variables in initialization block must be the same data type, no redeclaration of the type allowed.
+
+
+
+
+DateTime
+=========
+
+LocalDate.now();
+LocalDateTime.now();
+LocalDate.of(y, m, d)
+LocalTime.of(h, m, s, nanos)
+LocalDate.of(YYYY, Month.<month>, d);
+LocalDateTime.of(date, time)
+LocalDate.plusDays\Weeks\Months\Years(int);
+LocalDateTime.minusDays\Hours\Seconds(int);
+Collections.Period
+date.getDayOfWeek\Month\Year\DayOfYear();
+LocalDate.parse("<pattern>", <DateTimeFormatter var>);
+LocalTime.parse("<valid Time>");
+
+
+
+
+DateTime formatting
+====================
+
+date.format(DateTimeFormatter.ISO_LOCAL_DATE);
+
+time.format(DateTimeFormatter.ISO_LOCAL_TIME);
+
+datetime.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME);
+
+DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT\MEDIUM); .format(dateTime\date\NOTtime);
+
+DateTimeFormatter.ofPattern("MMMM dd, yyyy, hh:mm");
+
+
+
+
+Method
+=======
+
+* method overloading
+    - same method with diferent parameters
+    - allows changing the return type
+
+* method overriding
+    - child method with the same signature of the parent, with at least the same accessibility
+    - can make use of "super." call to parent method in specific cases
+    - child method cannot throw an exception that is new or broader than the class of any exception thrown in the parent class method
+    - if the method returns a value it must be the same or a subclass of the method in the parent class == covariant return type
+
+* method hiding is overriding applied to static method only
+
+
+
+
+Interface
+==========
+
+* Abstract data type that defines a list of abstract public methods
+
+* Can include a list of constant variables and default methods, if keywords public and\or abstract are not provided, the compiler will automatically insert them as part of definition
+
+* Public or default access only, no private or final
+
+* only an interface can extend an interface
+
+* an abstract class can implement an interface without overriding interface methods, until the first concrete class
+
+* a class inheriting from multiple interfaces that contain:
+	- the same method, will implement the latter method.
+	- the same method with different signature, there is no conflict == overloading
+	- the same method and signature but different return type, will not compile due to conflicting interfaces
+
+* interface variables are assumed to be static and final, other keyword and modifier will trigger compiler error; if missing, the compiler will automatically insert public static final to any interface variable
+
+* the name of an interface variable must be defined with uppercase letters and the value must be set when it is declared, due to final keyword
+
+* instantiating an interface creates an instance of an anonymous inner class implementer of that interface: Interface x = new Interface() { //implementation };
+
+* interface can be instantiated using a class instance which defines the abstract method
+
+
+	Interface Default Method
+	`````````````````````````
+
+* can provide "default" method with method body which in the end achieves backward compatibility with the existing codebase
+
+* default interface method must be marked only as "public default", as it may be overridden by a class that implements the interface; "public default" is not assumed or added automatically by the compiler
+
+* an interface extending another interface can redeclare default method as abstract, requiring classes that implement the new interface to explicitly provide a method body
+
+* inheriting multiple identical default methods is allowed only if the subclass overrides the method.
+
+
+	Interface Static Method
+	````````````````````````
+
+*  is not inherited in classes that implement the interface, but is accessible without instance of the interface: "ifName.staticMethod()"
+
+* is assumed by compiler to be public, will not compile if marked as private or protected
+
+ 
+
+
+
+

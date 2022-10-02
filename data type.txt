@@ -1,6 +1,13 @@
 primitive VS object VS reference
 =================================
 
+* default values for uninitialized static primitives:
+	int = 0
+	float = 0.0
+	char = ' '
+	boolean = false
+	String = null
+
 * primitives cannot be assigned null value
 
 * when not null, references can be used to call methods

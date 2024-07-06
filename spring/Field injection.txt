@@ -1,0 +1,29 @@
+* Not recommended, but good to know
+
+
+com.app.<component>.services \ <Service>Controller.java
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+@Service
+public class GetProductService {
+
+    public ResponseEntity<String> execute() {
+        return ResponseEntity.status(HttpStatus.CREATED).body("Got Product");
+    }
+
+}
+
+
+com.app.<component> \ <Model>Controller.java
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+@RestController
+public class ProductController {
+
+    @Autowired
+    private CreateProductService createProductService;
+
+    @PostMapping
+    public ResponseEntity<String> createProduct() {
+        return createProductService.execute();
+    }
+
+}

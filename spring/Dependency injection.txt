@@ -1,0 +1,19 @@
+com.app.<component>.services.<Service>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+@Service
+public class CreateProductService implements Command<Void, String> {
+
+    @Override
+    public ResponseEntity<String> execute(Void input) {
+        return ResponseEntity.status(HttpStatus.CREATED).body("Product created");
+    }
+}
+
+
+com.app.Command.java
+~~~~~~~~~~~~~~~~~~~~~~~
+
+public interface Command <I, O>{
+    ResponseEntity<O> execute(I input);
+}

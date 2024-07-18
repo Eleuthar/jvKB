@@ -1,0 +1,39 @@
+* interface functionalities should be split to not force a class to implement a method it doesn't need
+
+
+~~~~~~~~~~~~~~~~~~~~~
+#       BEFORE      #
+~~~~~~~~~~~~~~~~~~~~~
+
+interface VehicleInterface {
+    public void drive();
+    public void fly();
+}
+
+class FutureCar implements VehicleInterface {
+    \\ implement drive()
+    \\ implement fly()
+}
+
+class Car implements VehicleInterface {
+    \\ implement drive()
+}
+
+# Car is now forced to implement fly, but is not relevant to it
+# error thrown during compile
+
+
+
+~~~~~~~~~~~~~~~~~~~~
+#       AFTER      #
+~~~~~~~~~~~~~~~~~~~~
+
+interface VehicleInterface {
+    public void drive();
+}
+
+interface AirplaneInterface {
+    public void drive();
+}
+
+# now car can implement the relevant interface

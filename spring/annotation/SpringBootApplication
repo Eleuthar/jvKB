@@ -1,0 +1,2 @@
+combines three annotations: @Configuration, @EnableAutoConfiguration, and @ComponentScan. 
+

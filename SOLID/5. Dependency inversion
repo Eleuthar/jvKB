@@ -1,0 +1,42 @@
+* high level module should not be dependant on low level module
+* implement using an abstract class or interface as a dependency for the high level module, and the low level module implements the interface
+
+
+~~~~~~~~~~~~~~~~~~~~~
+#       BEFORE      #
+~~~~~~~~~~~~~~~~~~~~~
+
+# low level <<<<<<<<<<<<<<<<
+class FileSystem {
+    save(data) {
+    }
+}
+
+class ExternalDB {
+    save(data) {
+    }
+}
+
+class LocalPersist {
+    save(data) {
+    }
+}
+
+
+# high level <<<<<<<<<<<<<<<<
+class PersistMgr {
+    saveData(db, data) {
+        db.save(data);
+    }
+}
+
+
+
+~~~~~~~~~~~~~~~~~~~~
+#       AFTER      #
+~~~~~~~~~~~~~~~~~~~~
+class PersistMgr {
+    save(db, data) {
+        db.save(data);
+    }
+}

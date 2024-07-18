@@ -1,0 +1,93 @@
+* class \ module must be open for extension, closed for modification
+** implementation via abstract class method or generic method
+** one super class provides properties, the other methods
+
+~~~~~~~~~~~~~~~~~~~~~
+#       BEFORE      #
+~~~~~~~~~~~~~~~~~~~~~
+
+class Footballer {
+  constructor(name, age, role) {
+    this.name = name;
+    this.age = age;
+    this.role = role;
+  }
+
+  getFootballerRole() {
+    switch (this.role) {
+      case 'goalkeeper':
+        console.log(`The footballer, ${this.name} is a goalkeeper`);
+        break;
+      case 'defender':
+        console.log(`The footballer, ${this.name} is a defender`);
+        break;
+      case 'midfielder':
+        console.log(`The footballer, ${this.name} is a midfielder`);
+        break;
+      case 'forward':
+        console.log(`The footballer, ${this.name} plays in the forward line`);
+        break;
+      default:
+        throw new Error(`Unsupported animal type: ${this.type}`);
+    }
+  }
+}
+
+const kante = new Footballer('Ngolo Kante', 31, 'midfielder');
+const hazard = new Footballer('Eden Hazard', 32, 'forward');
+
+kante.getFootballerRole(); // The footballer, Ngolo Kante is a midfielder
+hazard.getFootballerRole(); // The footballer, Eden Hazard plays in the forward line
+
+~~~~~~~~~~~~~~~~~~~~
+#       AFTER      #
+~~~~~~~~~~~~~~~~~~~~
+
+class Footballer {
+  constructor(name, age, role) {
+    this.name = name;
+    this.age = age;
+    this.role = role;
+  }
+
+  getRole() {
+    return this.role.getRole();
+  }
+}
+
+// PlayerRole class uses the getRole method
+class PlayerRole {
+  getRole() {}
+}
+
+// Sub classes for different roles extend the PlayerRole class
+class GoalkeeperRole extends PlayerRole {
+  getRole() {
+    return 'goalkeeper';
+  }
+}
+
+class DefenderRole extends PlayerRole {
+  getRole() {
+    return 'defender';
+  }
+}
+
+class MidfieldRole extends PlayerRole {
+  getRole() {
+    return 'midfielder';
+  }
+}
+
+class ForwardRole extends PlayerRole {
+  getRole() {
+    return 'forward';
+  }
+}
+
+// Putting all of them together
+const hazard = new Footballer('Hazard', 32, new ForwardRole());
+console.log(`${hazard.name} plays in the ${hazard.getRole()} line`); // Hazard plays in the forward line
+
+const kante = new Footballer('Ngolo Kante', 31, new MidfieldRole());
+console.log(`${kante.name} is the best ${kante.getRole()} in the world!`); //Ngolo Kante is the best midfielder in the world!
